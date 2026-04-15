@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="$(arg robot_type)">
+    <xacro:arg name="robot_type" default="fr3"/>
+
+    <xacro:property name="package_name" value="franka_gazebo_bringup"/>
+    <xacro:property name="PI" value="3.14159265"/>
+
+
+    <!-- Include base robot fr3 -->
+    <xacro:include filename="$(find franka_description)/robots/$(arg robot_type)/$(arg robot_type).urdf.xacro"/>
+ 
+    <xacro:include filename="$(find franka_gazebo_bringup)/urdf/sensors.xacro"/>
+
+    <xacro:franka_gazebo_arm_imus arm_prefix="$(arg arm_prefix)" robot_type="$(arg robot_type)" imu_side="top"/>
+    <xacro:franka_gazebo_arm_imus arm_prefix="$(arg arm_prefix)" robot_type="$(arg robot_type)" imu_side="bottom"/>
+
+
+     <!-- RGBD CAMERA -->
+    <joint name="$(arg robot_type)/rgbd_camera_joint" type="fixed">
+        <origin xyz="0.5 0 0.5" rpy="0 ${PI/2} 0"/>
+    <parent link="$(arg robot_type)_link0"/>
+    <child link="$(arg robot_type)/rgbd_camera_frame"/>
+    </joint>
+    <link name="$(arg robot_type)/rgbd_camera_frame">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="package://${package_name}/meshes/d435.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="white">
+        <color rgba="0.9 0.9 0.9 1.0"/>
+        </material>
+    </visual>
+    </link>
+
+    <gazebo reference="$(arg robot_type)/rgbd_camera_frame">
+    <sensor name="rgbd_camera" type="rgbd_camera">
+        <ignition_frame_id>$(arg robot_type)/rgbd_camera_frame</ignition_frame_id>
+        <camera name="rgbd_camera_frame">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <lens>
+            <intrinsics>
+            <fx>277.1</fx>
+            <fy>277.1</fy>
+            <cx>160.5</cx>
+            <cy>120.5</cy>
+            <s>0</s>
+            </intrinsics>
+        </lens>
+        <distortion>
+            <k1>0.104207</k1>
+            <k2>-0.255558</k2>
+            <k3>0.128694</k3>
+            <p1>0.000512</p1>
+            <p2>0.000319</p2>
+            <center>0.5 0.5</center>
+        </distortion>
+        <image>
+            <width>1280</width>
+            <height>720</height>
+            <format>L8</format>
+        </image>
+        <clip>
+            <near>0.01</near>
+            <far>300</far>
+        </clip>
+        <depth_camera>
+            <clip>
+            <near>0.1</near>
+            <far>10</far>
+            </clip>
+        </depth_camera>
+        <noise>
+            <type>gaussian</type>
+            <mean>0</mean>
+            <stddev>0.003</stddev>
+        </noise>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>10</update_rate>
+        <visualize>0</visualize>
+        <topic>$(arg robot_type)/depth_camera</topic>
+    </sensor>
+    </gazebo>
+
+</robot>
