@@ -307,6 +307,10 @@ def generate_launch_description():
         'franka_fr3_moveit_config', 'config/kinematics.yaml'
     )
 
+    sensors_3d_yaml = load_yaml(
+    'franka_fr3_moveit_config', 'config/sensors_3d.yaml'
+    )
+
     # Planning Functionality
     ompl_planning_pipeline_config = {
         'move_group': {
@@ -349,6 +353,14 @@ def generate_launch_description():
         'publish_transforms_updates': True,
     }
 
+    robot_description_planning = {
+        'robot_description_planning': {
+        'octomap_frame': 'fr3_link0',
+        'octomap_resolution': 0.01,
+        'max_range': 1.2,
+        }
+    }
+
     # Start the actual move_group node/action server
     run_move_group_node = Node(
         package='moveit_ros_move_group',
@@ -359,11 +371,13 @@ def generate_launch_description():
             {'use_sim_time': True}, 
             robot_description,
             robot_description_semantic,
+            robot_description_planning,
             kinematics_yaml,
             ompl_planning_pipeline_config,
             trajectory_execution,
             moveit_controllers,
             planning_scene_monitor_parameters,
+            sensors_3d_yaml,
         ],
     )
 
