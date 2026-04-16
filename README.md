@@ -58,16 +58,10 @@ These outputs are intended to support object recognition, pose estimation, and d
 
 Use this section to document example commands for starting the simulation, launching the robot stack, and opening RViz.
 
-### Example 1: Start the full simulation
+### Start the full simulation
 
 ```bash
-# Add the command used to launch the full Gazebo Ignition simulation here
-```
-
-### Example 2: Start perception and manipulation components
-
-```bash
-# Add the command used to launch the perception and MoveIt nodes here
+ros2 launch franka_gazebo_bringup moveit_gazebo_franka_arm_example_controller.launch.py
 ```
 
 ## Perception Topics

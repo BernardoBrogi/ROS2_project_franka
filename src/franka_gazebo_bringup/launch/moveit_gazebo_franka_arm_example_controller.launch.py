@@ -135,7 +135,7 @@ def generate_launch_description():
 
     gazebo_world_file = os.path.join(
         get_package_share_directory('franka_gazebo_bringup'),
-        'worlds', 'my_world.sdf'
+        'worlds', 'my_world_obstacle.sdf'
     )
 
     load_gripper = LaunchConfiguration(load_gripper_name)
@@ -176,7 +176,7 @@ def generate_launch_description():
             PathJoinSubstitution([
                 FindPackageShare('franka_gazebo_bringup'),
                 'worlds',
-                'my_world.sdf'
+                'my_world_obstacle.sdf'
             ]),
             # ' -v 4',
         ],
@@ -356,8 +356,8 @@ def generate_launch_description():
     robot_description_planning = {
         'robot_description_planning': {
         'octomap_frame': 'fr3_link0',
-        'octomap_resolution': 0.01,
-        'max_range': 1.2,
+        'octomap_resolution': 0.05,
+        'max_range': 5.0,
         }
     }
 

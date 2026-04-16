@@ -17,7 +17,7 @@
 
      <!-- RGBD CAMERA -->
     <joint name="$(arg robot_type)/rgbd_camera_joint" type="fixed">
-        <origin xyz="0.5 0 0.5" rpy="0 ${PI/2} 0"/>
+        <origin xyz="0.5 0 1" rpy="0 ${PI/2} 0"/>
     <parent link="$(arg robot_type)_link0"/>
     <child link="$(arg robot_type)/rgbd_camera_frame"/>
     </joint>
