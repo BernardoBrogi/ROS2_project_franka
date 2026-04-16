@@ -1,2 +1,4 @@
-# ROS 2 Integration for Franka Robotics Research Robots
+# Repository for the project of the course Industrial Robotics
+
+
 
