@@ -37,6 +37,14 @@ Students are expected to implement the following components:
 
 The random spawn pose must always remain reachable for the robot so the manipulation task can be completed reliably, while still requiring the planned trajectory to avoid the obstacle.
 
+## Suggested Approach for Obstacle Avoidance
+
+As a suggested implementation strategy, students can use the MoveIt perception pipeline with OctoMap to build a 3D occupancy map from camera data and feed it to the planner for collision-aware trajectory generation.
+
+Reference tutorial:
+
+- https://moveit.picknik.ai/main/doc/examples/perception_pipeline/perception_pipeline_tutorial.html
+
 ## Data and Visualization
 
 The camera provides:
