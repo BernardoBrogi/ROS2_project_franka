@@ -271,7 +271,10 @@ def generate_launch_description():
         arguments=[
         'fr3_gripper',
         '--controller-manager-timeout', '30',
+        # '--inactive',   # avoid immediate mode-switch conflict
+
         ],
+        condition=IfCondition(load_gripper),
         output='screen'
         )
 
@@ -371,13 +374,13 @@ def generate_launch_description():
             {'use_sim_time': True}, 
             robot_description,
             robot_description_semantic,
-            robot_description_planning,
+            # robot_description_planning,
             kinematics_yaml,
             ompl_planning_pipeline_config,
             trajectory_execution,
             moveit_controllers,
             planning_scene_monitor_parameters,
-            sensors_3d_yaml,
+            # sensors_3d_yaml,
         ],
     )
 
