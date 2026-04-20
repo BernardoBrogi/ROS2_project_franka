@@ -2,6 +2,36 @@
 
 This repository contains the project for the Industrial Robotics course. The system is built around the [Franka ROS 2 environment](https://github.com/frankarobotics/franka_ros2) and is focused on a pick-and-place task in simulation.
 
+## Installation
+
+Install the **Development Tools** package:
+  ```bash
+  sudo apt install ros-dev-tools
+  ```
+**Clone the Repositories:**
+   ```bash
+   git clone https://github.com/frankarobotics/franka_ros2.git src
+   ```
+**Install the dependencies**
+  ```bash
+  vcs import src < src/dependency.repos --recursive --skip-existing
+  ```
+**Detect and install project dependencies**
+   ```bash
+   rosdep install --from-paths src --ignore-src --rosdistro humble -y
+   ```
+**Build**
+   ```bash
+   # use the --symlinks option to reduce disk usage, and facilitate development.
+   colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
+  ```
+**Adjust Enviroment**
+   ```bash
+   # Adjust environment to recognize packages and dependencies in your newly built ROS 2 workspace.
+   source install/setup.sh
+  ```
+
+
 ## Project Goal
 
 The objective is to pick up a cube in simulation and place it autonomously inside a container using:
