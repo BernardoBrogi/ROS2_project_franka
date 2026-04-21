@@ -12,10 +12,6 @@ Install the **Development Tools** package:
    ```bash
    git clone https://github.com/frankarobotics/franka_ros2.git src
    ```
-**Install the dependencies**
-  ```bash
-  vcs import src < src/dependency.repos --recursive --skip-existing
-  ```
 **Detect and install project dependencies**
    ```bash
    rosdep install --from-paths src --ignore-src --rosdistro humble -y
