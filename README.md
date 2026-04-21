@@ -102,8 +102,7 @@ ros2 launch franka_gazebo_bringup moveit_gazebo_franka_arm_example_controller.la
 
 Gazebo scene:
 
-![Gazebo environment without obstacle](images/gazebo.png)
-
+<img src="images/gazebo.png" alt="Gazebo environment without obstacle" width="52%"/>
 RViz scene:
 
 ![RViz environment without obstacle](images/rviz.png)
