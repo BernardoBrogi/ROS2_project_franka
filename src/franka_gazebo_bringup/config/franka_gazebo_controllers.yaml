@@ -28,7 +28,6 @@
         type: joint_trajectory_controller/JointTrajectoryController
       
       fr3_gripper:
-        # type: position_controllers/GripperActionController
         type: joint_trajectory_controller/JointTrajectoryController
 
 
