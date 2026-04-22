@@ -4,6 +4,11 @@ This repository contains the project for the Industrial Robotics course. The sys
 
 ## Installation
 
+Update:
+  ```bash
+  sudo apt update
+  ```
+
 Install the **Development Tools** package:
   ```bash
   sudo apt install ros-dev-tools
