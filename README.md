@@ -4,37 +4,42 @@ This repository contains the project for the Industrial Robotics course. The sys
 
 ## Installation
 
-Update:
-  ```bash
-  sudo apt update
-  ```
+Update the package index:
+```bash
+sudo apt update
+```
 
-Install the **Development Tools** package:
-  ```bash
-  sudo apt install ros-dev-tools
-  ```
-**Clone the Repositories:**
-   ```bash
-   git clone https://github.com/BernardoBrogi/ROS2_project_franka.git
-   ```
-**Detect and install project dependencies**
-   ```bash
-   rosdep install --from-paths src --ignore-src --rosdistro humble -y
-   ```
-**Build**
-   ```bash
-   # use the --symlinks option to reduce disk usage, and facilitate development.
-   colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
-  ```
-in case the build is causing freezing use
-  ```bash
-  colcon build --parallel-workers 2
-  ```
-**Adjust Enviroment**
-   ```bash
-   # Adjust environment to recognize packages and dependencies in your newly built ROS 2 workspace.
-   source install/setup.sh
-  ```
+Install the ROS 2 development tools and the testing libraries used by the project:
+```bash
+sudo apt install ros-dev-tools libgtest-dev libgmock-dev
+```
+
+Clone the repository:
+```bash
+git clone https://github.com/BernardoBrogi/ROS2_project_franka.git
+```
+
+Install the project dependencies:
+```bash
+rosdep install --from-paths src --ignore-src --rosdistro humble -y
+```
+
+Build the workspace:
+```bash
+# Use --symlink-install to reduce disk usage and simplify development.
+colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
+```
+
+If the build appears to freeze, limit parallelism:
+```bash
+colcon build --parallel-workers 2
+```
+
+Source the workspace environment:
+```bash
+# Make the newly built ROS 2 packages available in the current shell.
+source install/setup.sh
+```
 
 
 ## Project Goal
