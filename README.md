@@ -26,6 +26,10 @@ Install the **Development Tools** package:
    # use the --symlinks option to reduce disk usage, and facilitate development.
    colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
   ```
+in case the build is causing freezing use
+  ```bash
+  colcon build --parallel-workers 2
+  ```
 **Adjust Enviroment**
    ```bash
    # Adjust environment to recognize packages and dependencies in your newly built ROS 2 workspace.
