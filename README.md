@@ -4,6 +4,32 @@ This repository contains the project for the Industrial Robotics course. The sys
 
 ## Installation
 
+### Using Docker
+
+If you want to use Docker, copy the docker folder to your local environment, open a terminal inside it, and use the provided scripts:
+
+```bash
+./build.sh
+```
+
+Build the Docker image.
+
+```bash
+./run.sh
+```
+
+Start the container for the first time.
+
+```bash
+./exec.sh
+```
+
+Open additional terminals inside the running container.
+
+The Docker image includes a fresh ROS 2 installation, so once inside the container follow the rest of the setup guidelines to install the required project packages and dependencies.
+
+### Local installation
+
 Update the package index:
 ```bash
 sudo apt update
