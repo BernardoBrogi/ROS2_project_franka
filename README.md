@@ -15,7 +15,7 @@ Install the **Development Tools** package:
   ```
 **Clone the Repositories:**
    ```bash
-   git clone https://github.com/frankarobotics/franka_ros2.git src
+   git clone https://github.com/BernardoBrogi/ROS2_project_franka.git
    ```
 **Detect and install project dependencies**
    ```bash
