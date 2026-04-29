@@ -97,8 +97,6 @@ Students are expected to implement the following components:
 4. Motion planning that avoids collisions with an obstacle placed between the robot and the cube.
 5. A placement policy that autonomously places the cube inside the container.
 
-The random spawn pose must always remain reachable for the robot so the manipulation task can be completed reliably.
-
 ## Obstacle Avoidance
 
 Two possible approaches are:
