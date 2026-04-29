@@ -64,7 +64,7 @@ colcon build --parallel-workers 2
 Source the workspace environment:
 ```bash
 # Make the newly built ROS 2 packages available in the current shell.
-source install/setup.sh
+source install/setup.bash
 ```
 
 
@@ -83,9 +83,6 @@ The robot must be able to detect the object, plan a grasp, pick the cube, and pl
 The simulated world includes:
 
 - A Franka FR3 robotic arm
-- A cube to be picked
-- A container where the cube must be placed
-- An optional static obstacle positioned between the robot and the cube (for the obstacle-avoidance extension)
 - A simulated Intel RealSense RGB-D camera
 
 The camera streams both RGB data and point cloud information. These data streams can be visualized through ROS 2 topics and in RViz.
@@ -94,28 +91,25 @@ The camera streams both RGB data and point cloud information. These data streams
 
 Students are expected to implement the following components:
 
-1. A node that reads the camera data and estimates the pose of the cube.
-2. A grasping and manipulation pipeline that uses the estimated pose to pick the cube.
-3. Optional extension: motion planning that avoids collisions with an obstacle placed between the robot and the cube.
-4. A placement policy that autonomously places the cube inside the container.
-5. A Gazebo world containing the cube and the container (and optionally the obstacle, if implementing obstacle avoidance).
-6. A launch process where the cube spawns in a random reachable pose every time the simulation is started.
+1. A Gazebo world containing the cube, the container, and the obstacle.
+2. A node that reads the camera data and estimates the pose of the cube.
+3. A grasping and manipulation pipeline that uses the estimated pose to pick the cube.
+4. Motion planning that avoids collisions with an obstacle placed between the robot and the cube.
+5. A placement policy that autonomously places the cube inside the container.
 
 The random spawn pose must always remain reachable for the robot so the manipulation task can be completed reliably.
 
-## Optional Obstacle Avoidance
+## Obstacle Avoidance
 
-Obstacle avoidance is optional for this project and is not a required/recommended baseline milestone.
+Two possible approaches are:
 
-If you still want to implement it as an additional feature, two possible approaches are:
-
+- Use a collision object in the MoveIt planning scene, following the planning-around-objects tutorial.
 - Use the MoveIt perception pipeline with OctoMap to build a 3D occupancy map from camera data and feed it to the planner for collision-aware trajectory generation.
-- Use a simpler hard-coded collision object in the MoveIt planning scene, following the planning-around-objects tutorial.
 
 Reference tutorial:
 
-- https://moveit.picknik.ai/main/doc/examples/perception_pipeline/perception_pipeline_tutorial.html
 - https://moveit.picknik.ai/main/doc/tutorials/planning_around_objects/planning_around_objects.html
+- https://moveit.picknik.ai/main/doc/examples/perception_pipeline/perception_pipeline_tutorial.html
 
 ## Data and Visualization
 
