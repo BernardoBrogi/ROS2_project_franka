@@ -162,7 +162,7 @@ def generate_launch_description():
             PathJoinSubstitution([
                 FindPackageShare('franka_gazebo_bringup'),
                 'worlds',
-                'my_world_obstacle.sdf',
+                'my_world.sdf',
             ]),
         ],
         description='Extra args to be forwared to gazebo')
