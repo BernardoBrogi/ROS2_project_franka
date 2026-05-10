@@ -50,6 +50,11 @@ Enter in the ws:
 cd ROS2_project_franka
 ```
 
+Update rosdep:
+```bash
+rosdep update
+```
+
 Install the project dependencies:
 ```bash
 rosdep install --from-paths src --ignore-src --rosdistro humble -y
