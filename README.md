@@ -45,6 +45,11 @@ Clone the repository:
 git clone https://github.com/BernardoBrogi/ROS2_project_franka.git
 ```
 
+Enter in the ws:
+```bash
+cd ROS2_project_franka
+```
+
 Install the project dependencies:
 ```bash
 rosdep install --from-paths src --ignore-src --rosdistro humble -y
